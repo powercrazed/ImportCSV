@@ -28,7 +28,8 @@
 
 <%= link_to 'New Thing', new_thing_path %>
 
-<h2>import data</h2>
+<h2>Import data</h2>
+<p><%= link_to 'download a template csv', asset_path("things.csv") %></p>
 <%= form_tag import_things_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Import CSV" %>
