@@ -1,6 +1,11 @@
 class ThingsController < ApplicationController
   before_action :set_thing, only: [:show, :edit, :update, :destroy]
 
+  def import
+    Thing.import(params[:file])
+    redirect_to root_url, notice: "Things imported!"
+  end
+
   # GET /things
   # GET /things.json
   def index
