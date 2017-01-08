@@ -27,3 +27,9 @@
 <br>
 
 <%= link_to 'New Thing', new_thing_path %>
+
+<h2>import data</h2>
+<%= form_tag import_things_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+<% end %>
