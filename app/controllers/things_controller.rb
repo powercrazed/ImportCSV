@@ -2,8 +2,12 @@ class ThingsController < ApplicationController
   before_action :set_thing, only: [:show, :edit, :update, :destroy]
 
   def import
-    Thing.import(params[:file])
-    redirect_to root_url, notice: "Things imported!"
+    begin
+      Thing.import(params[:file])
+      redirect_to root_url, notice: "Things imported!"
+    rescue
+      redirect_to root_url, notice: "Import failed!"
+    end
   end
 
   # GET /things
