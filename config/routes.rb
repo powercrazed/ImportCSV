@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :things
+  resources :things do
+    collection { post :import}
+  end
 
   root to: "things#index"
   # The priority is based upon order of creation: first created -> highest priority.
