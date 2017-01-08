@@ -3,7 +3,14 @@ class Thing < ActiveRecord::Base
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-      Thing.create! row.to_hash
+
+      thing_hash = row.to_hash
+      thing = Thing.where(name: thing_hash["name"])
+
+      # create if not in database
+      if thing.count == 0
+        Thing.create! thing_hash
+      end
     end
   end
 end
