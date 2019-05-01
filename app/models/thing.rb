@@ -1,4 +1,4 @@
-class Thing < ActiveRecord::Base
+class Thing < ApplicationRecord
   require 'csv'
 
   def self.import(file)
